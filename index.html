@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Channel Finder</title>
+    <style>
+      #channelNumberDiv {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin: 5px;
+      }
+      #channelNumber {
+        border-radius: 8px;
+        border: 2px solid;
+        padding: 2px 5px;
+      }
+      button {
+        border-radius: 8px;
+        padding: 1px 5px;
+      }
+      button:hover {
+        background-color: #b7b7b7;
+      }
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      #topBar {
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      #resultDiv {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        font: 700;
+        margin: 10px auto;
+        border-radius: 10px;
+        gap: 15px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        max-height: 77vh;
+      }
+
+      #log {
+        background-color: rgb(108, 108, 108);
+        color: aliceblue;
+        width: 99%;
+        font-size: 13px;
+        padding: 0.6%;
+        text-overflow: ellipsis;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        max-height: 14px;
+      }
+
+      #potentialDiv,
+      #selectedDiv {
+        gap: 8px;
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        font-size: 13px;
+        border-radius: 10px;
+        padding: 1%;
+        min-height: 80vh;
+      }
+
+      #potentialList,
+      #selectedList {
+        padding: 0;
+        width: 98%;
+        display: flex;
+        border-radius: 10px;
+        gap: 10px;
+        overflow: auto;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      #potentialList li,
+      #selectedList li {
+        align-items: center;
+        padding: 2px;
+        border: 2px solid #989898;
+        border-radius: 10px;
+        display: flex;
+        gap: 40px;
+        justify-content: space-around;
+      }
+      #potentialList li:hover,
+      #selectedList li:hover {
+        border-color: rgb(53, 147, 236);
+        padding: 4px;
+      }
+
+      #potentialList::-webkit-scrollbar,
+      #selectedList::-webkit-scrollbar,
+      #channelDiv::-webkit-scrollbar {
+        display: none;
+      }
+
+      #channelDiv {
+        height: 80vh;
+        background-color: rgb(238, 236, 236);
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="topBar">
+      <select id="keywordSelect"></select>
+      <button id="searchButton">Search</button>
+      <button id="potentialChannelsButton" onclick="toggleDivs(true)">
+        Potential channels
+      </button>
+      <button id="selectChannelsButton" onclick="toggleDivs(false)">
+        Select channels
+      </button>
+      <button id="excludedChannelsButton" onclick="excludeChannels()">
+        Exclude channels
+      </button>
+      <button id="generateCSVButton" onclick="generateCsv()">
+        Selected CSV
+      </button>
+      <button id="addToExistingButton" onclick="addToExisting()">
+        Add to Existing
+      </button>
+      <button id="generateDataButton" onclick="generateData()">
+        Generate Data
+      </button>
+      <div id="channelNumberDiv">
+        <div id="channelNumber"></div>
+      </div>
+    </div>
+    <div id="resultDiv">
+      <div id="log">console Log here</div>
+      <div
+        style="height: 80vh; background-color: rgb(238, 236, 236)"
+        id="channelDiv"
+      >
+        <div id="potentialDiv">
+          <ul id="potentialList"></ul>
+        </div>
+        <div id="selectedDiv">
+          <ul id="selectedList"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
